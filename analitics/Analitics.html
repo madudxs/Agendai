@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Relatórios</title>
+    <link rel="stylesheet" type="text/css" href="../styles/analitics.css" />
+    <!-- Importando Google Charts -->
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script type="text/javascript" src="../js/analitics.js"></script>
+  </head>
+  <body>
+    <!-- Navegação entre as informações dos clientes -->
+    <div class="main_container">
+      <div class="container">
+        <div id="tab-navigation">
+          <button class="tablink active" onclick="openTab(event, 'age')">
+            Idade
+          </button>
+          <button class="tablink" onclick="openTab(event, 'gender')">
+            Gênero
+          </button>
+          <button class="tablink" onclick="openTab(event, 'days')">Dias</button>
+          <button class="tablink" onclick="openTab(event, 'times')">
+            Horários
+          </button>
+        </div>
+
+        <div id="tab-content">
+          <div id="age" class="tab-content active">
+            <h3>Idade dos Clientes</h3>
+            <div id="age-chart" class="chart"></div>
+          </div>
+
+          <div id="gender" class="tab-content">
+            <h3>Gênero dos Clientes</h3>
+            <div id="gender-chart" class="chart"></div>
+          </div>
+
+          <div id="days" class="tab-content">
+            <h3>Dias Mais Procurados</h3>
+            <div id="days-chart" class="chart"></div>
+          </div>
+
+          <div id="times" class="tab-content">
+            <h3>Horários Mais Procurados</h3>
+            <div id="times-chart" class="chart"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div id="doctor-comparison">
+          <h3>Uso da Sala</h3>
+          <div id="doctors-chart" class="chart"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

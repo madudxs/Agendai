@@ -1,0 +1,127 @@
+:root {
+  --numHours: 10;
+  --timeHeight: 60px;
+  --eventBorderColor: #f2d3d8;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  padding: 1rem;
+}
+
+.timeline {
+  display: grid;
+  grid-template-rows: repeat(var(--numHours), var(--timeHeight));
+  text-align: right;
+  padding-right: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.time-marker {
+  padding: 10px;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.date {
+  display: flex;
+  justify-content: center;
+}
+
+.date-num {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.date-day {
+  font-size: 1rem;
+  color: #666;
+}
+
+.events {
+  position: relative;
+  height: calc(var(--numHours) * var(--timeHeight));
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+}
+
+.event {
+  position: absolute;
+  padding: 10px;
+  border: 1px solid var(--eventBorderColor);
+  border-radius: 5px;
+  background: #fff;
+}
+
+.start-9 {
+  top: 0;
+}
+
+.start-10 {
+  top: 60px;
+}
+
+.start-11 {
+  top: 120px;
+}
+
+.end-10 {
+  height: 60px;
+}
+
+.end-11 {
+  height: 120px;
+}
+
+.end-12 {
+  height: 180px;
+}
+
+/* Estilos do modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.button {
+  margin-top: 10px;
+  background: #f4f4f4;
+  padding: 10px;
+  text-align: center;
+}
