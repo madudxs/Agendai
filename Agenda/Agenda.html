@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calendário Semanal</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="calendar">
+      <div class="timeline">
+        <div class="spacer"></div>
+        <div class="time-marker">9 AM</div>
+        <div class="time-marker">10 AM</div>
+        <div class="time-marker">11 AM</div>
+        <div class="time-marker">12 PM</div>
+        <div class="time-marker">1 PM</div>
+        <div class="time-marker">2 PM</div>
+        <div class="time-marker">3 PM</div>
+        <div class="time-marker">4 PM</div>
+        <div class="time-marker">5 PM</div>
+        <div class="time-marker">6 PM</div>
+      </div>
+
+      <div class="days">
+        <div class="day" data-day="segunda">
+          <div class="date">
+            <p class="date-num">1</p>
+            <p class="date-day">Segunda</p>
+          </div>
+          <div class="events"></div>
+        </div>
+        <div class="day" data-day="terça">
+          <div class="date">
+            <p class="date-num">2</p>
+            <p class="date-day">Terça</p>
+          </div>
+          <div class="events"></div>
+        </div>
+        <div class="day" data-day="quarta">
+          <div class="date">
+            <p class="date-num">3</p>
+            <p class="date-day">Quarta</p>
+          </div>
+          <div class="events"></div>
+        </div>
+        <div class="day" data-day="quinta">
+          <div class="date">
+            <p class="date-num">4</p>
+            <p class="date-day">Quinta</p>
+          </div>
+          <div class="events"></div>
+        </div>
+        <div class="day" data-day="sexta">
+          <div class="date">
+            <p class="date-num">5</p>
+            <p class="date-day">Sexta</p>
+          </div>
+          <div class="events"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para adicionar evento -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Adicionar Evento</h2>
+        <form id="event-form">
+          <label for="event-name">Nome do Evento:</label>
+          <input type="text" id="event-name" name="event-name" required />
+          <label for="event-start-time">Horário de Início:</label>
+          <input
+            type="time"
+            id="event-start-time"
+            name="event-start-time"
+            required
+          />
+          <label for="event-end-time">Horário de Término:</label>
+          <input
+            type="time"
+            id="event-end-time"
+            name="event-end-time"
+            required
+          />
+          <input type="hidden" id="event-day" name="event-day" />
+          <button type="submit">Salvar Evento</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
