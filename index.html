@@ -1,33 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en">
 
-    <title>Agendai teste</title>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Login</h1>
-      <form>
-        <label for="username">Usuario</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Enter your username"
-        />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="./styles/login.css">
+    <title>Agendai | Login</title>
+</head>
 
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-        />
+<body>
 
-        <button type="submit">Login</button>
-      </form>
+    <div class="container" id="container">
+        <div class="form-container sign-in">
+            <form>
+                <h1>Entrar</h1>
+                <span>Use seu email ou senha</span>
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <a href="#">Esqueci a senha</a>
+                <button>Entrar</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-right">
+                    <h1>Bem-vindo(a)!</h1>
+                    <p>Realize o login para acessar o site!</p>
+                    <img src="./images/imagemPsicologo.svg" alt="imagemPsicologo">
+                </div>
+            </div>
+        </div>
     </div>
-  </body>
+
+    <script src="script.js"></script>
+</body>
+
 </html>

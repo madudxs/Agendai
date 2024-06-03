@@ -1,19 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const timeSlots = document.querySelectorAll(".events");
   const modal = document.getElementById("modal");
   const closeModal = document.querySelector(".close");
+  const addEventBtn = document.querySelector(".add-event-btn");
   const eventForm = document.getElementById("event-form");
   const eventNameInput = document.getElementById("event-name");
   const eventDayInput = document.getElementById("event-day");
   const startTimeInput = document.getElementById("event-start-time");
   const endTimeInput = document.getElementById("event-end-time");
+  const userInput = document.getElementById("user");
 
-  // Abrir o modal ao clicar na seção de eventos
-  timeSlots.forEach((slot) => {
-    slot.addEventListener("click", function () {
-      modal.style.display = "block";
-      eventDayInput.value = this.closest(".day").getAttribute("data-day");
-    });
+  // Atualizar datas da semana
+  const today = new Date();
+  const day = today.getDay();
+  const date = today.getDate();
+  const startDate = new Date(today.setDate(date - (day - 1))); // Segunda-feira
+
+  for (let i = 0; i < 5; i++) {
+    const currentDate = new Date(startDate);
+    currentDate.setDate(startDate.getDate() + i);
+    document.getElementById(
+      `${["monday", "tuesday", "wednesday", "thursday", "friday"][i]}-date`
+    ).textContent = currentDate.getDate();
+  }
+
+  // Abrir o modal ao clicar no botão
+  addEventBtn.addEventListener("click", () => {
+    modal.style.display = "block";
   });
 
   // Fechar o modal
@@ -35,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const eventDay = eventDayInput.value;
     const startTime = startTimeInput.value;
     const endTime = endTimeInput.value;
+    const user = userInput.value;
 
     if (eventName.trim() !== "" && startTime && endTime) {
       const start = parseInt(startTime.split(":")[0], 10);
@@ -45,17 +58,18 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       const eventElement = document.createElement("div");
-      eventElement.classList.add("event");
+      eventElement.classList.add("event", user);
       eventElement.style.top = `${(start - 9) * 60}px`;
       eventElement.style.height = `${(end - start) * 60}px`;
       eventElement.innerHTML = `
-                <p class="title">${eventName}</p>
-                <p class="time">${startTime} - ${endTime}</p>
-            `;
+              <p class="title">${eventName}</p>
+              <p class="time">${startTime} - ${endTime}</p>
+          `;
 
       eventsSection.appendChild(eventElement);
 
       modal.style.display = "none";
+      eventForm.reset();
     }
   });
 });
