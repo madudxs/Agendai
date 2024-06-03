@@ -7,60 +7,47 @@
   </head>
   <body>
     <div class="calendar">
-      <div class="timeline">
-        <div class="spacer"></div>
-        <div class="time-marker">9 AM</div>
-        <div class="time-marker">10 AM</div>
-        <div class="time-marker">11 AM</div>
-        <div class="time-marker">12 PM</div>
-        <div class="time-marker">1 PM</div>
-        <div class="time-marker">2 PM</div>
-        <div class="time-marker">3 PM</div>
-        <div class="time-marker">4 PM</div>
-        <div class="time-marker">5 PM</div>
-        <div class="time-marker">6 PM</div>
-      </div>
-
       <div class="days">
         <div class="day" data-day="segunda">
           <div class="date">
-            <p class="date-num">1</p>
-            <p class="date-day">Segunda</p>
+            <p class="date-num" id="monday-date"></p>
+            <p class="date-day">Segunda-feira</p>
           </div>
           <div class="events"></div>
         </div>
         <div class="day" data-day="terça">
           <div class="date">
-            <p class="date-num">2</p>
-            <p class="date-day">Terça</p>
+            <p class="date-num" id="tuesday-date"></p>
+            <p class="date-day">Terça-feira</p>
           </div>
           <div class="events"></div>
         </div>
         <div class="day" data-day="quarta">
           <div class="date">
-            <p class="date-num">3</p>
-            <p class="date-day">Quarta</p>
+            <p class="date-num" id="wednesday-date"></p>
+            <p class="date-day">Quarta-feira</p>
           </div>
           <div class="events"></div>
         </div>
         <div class="day" data-day="quinta">
           <div class="date">
-            <p class="date-num">4</p>
-            <p class="date-day">Quinta</p>
+            <p class="date-num" id="thursday-date"></p>
+            <p class="date-day">Quinta-feira</p>
           </div>
           <div class="events"></div>
         </div>
         <div class="day" data-day="sexta">
           <div class="date">
-            <p class="date-num">5</p>
-            <p class="date-day">Sexta</p>
+            <p class="date-num" id="friday-date"></p>
+            <p class="date-day">Sexta-feira</p>
           </div>
           <div class="events"></div>
         </div>
       </div>
     </div>
 
-    <!-- Modal para adicionar evento -->
+    <button class="add-event-btn">+</button>
+
     <div id="modal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -68,6 +55,14 @@
         <form id="event-form">
           <label for="event-name">Nome do Evento:</label>
           <input type="text" id="event-name" name="event-name" required />
+          <label for="event-day">Dia:</label>
+          <select id="event-day" name="event-day" required>
+            <option value="segunda">Segunda</option>
+            <option value="terça">Terça</option>
+            <option value="quarta">Quarta</option>
+            <option value="quinta">Quinta</option>
+            <option value="sexta">Sexta</option>
+          </select>
           <label for="event-start-time">Horário de Início:</label>
           <input
             type="time"
@@ -82,7 +77,12 @@
             name="event-end-time"
             required
           />
-          <input type="hidden" id="event-day" name="event-day" />
+          <label for="user">Usuário:</label>
+          <select id="user" name="user" required>
+            <option value="user1">Usuário 1</option>
+            <option value="user2">Usuário 2</option>
+            <option value="user3">Usuário 3</option>
+          </select>
           <button type="submit">Salvar Evento</button>
         </form>
       </div>
