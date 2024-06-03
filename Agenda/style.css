@@ -1,7 +1,11 @@
 :root {
   --numHours: 10;
   --timeHeight: 60px;
-  --eventBorderColor: #f2d3d8;
+  --user1Color: #f4cccc;
+  --user2Color: #f29b6a;
+  --user3Color: #cfe2f3;
+  --timelineWidth: 60px;
+  --dayWidth: calc((100% - var(--timelineWidth)) / 5);
 }
 
 body {
@@ -11,27 +15,33 @@ body {
 }
 
 .calendar {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
 }
 
 .timeline {
-  display: grid;
-  grid-template-rows: repeat(var(--numHours), var(--timeHeight));
-  text-align: right;
-  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  width: var(--timelineWidth);
+  text-align: center;
+  padding-top: 1rem;
   border-right: 1px solid #ddd;
 }
 
-.time-marker {
-  padding: 10px;
+.time {
+  height: var(--timeHeight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: #666;
 }
 
 .days {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex: 1;
   gap: 10px;
 }
 
@@ -39,10 +49,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: var(--dayWidth);
 }
 
 .date {
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
@@ -52,52 +64,46 @@ body {
 }
 
 .date-day {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: #666;
+  margin-left: 10px;
 }
 
 .events {
   position: relative;
   height: calc(var(--numHours) * var(--timeHeight));
   border: 1px solid #ddd;
-  background: #f7f7f7;
+  border-radius: 8px;
+  background: #96af9c49;
 }
 
 .event {
   position: absolute;
   padding: 10px;
-  border: 1px solid var(--eventBorderColor);
+  border: 1px solid #ddd;
   border-radius: 5px;
   background: #fff;
+  width: 90%;
+  margin-left: 5%;
 }
 
-.start-9 {
-  top: 0;
+.user1 {
+  background: var(--user1Color);
 }
 
-.start-10 {
-  top: 60px;
+.user2 {
+  background: var(--user2Color);
 }
 
-.start-11 {
-  top: 120px;
+.user3 {
+  background: var(--user3Color);
 }
 
-.end-10 {
-  height: 60px;
-}
-
-.end-11 {
-  height: 120px;
-}
-
-.end-12 {
-  height: 180px;
-}
-
-/* Estilos do modal */
+/* Modal styles */
 .modal {
-  display: none;
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -106,6 +112,9 @@ body {
   border: 1px solid #ddd;
   padding: 20px;
   z-index: 1000;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 40vw;
 }
 
 .modal-content {
@@ -117,11 +126,74 @@ body {
   top: 10px;
   right: 10px;
   cursor: pointer;
+  color: #999;
+  font-size: 24px;
 }
 
-.button {
-  margin-top: 10px;
-  background: #f4f4f4;
-  padding: 10px;
+.close:hover {
+  color: #555;
+}
+
+.add-event-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #b79ec6;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  font-size: 50px;
+  line-height: 50px;
   text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.add-event-btn:hover {
+  background-color: #a18fc0;
+}
+
+#event-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="time"],
+select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #b79ec6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #a18fc0;
+}
+
+@media only screen and (max-width: 480px) {
+  .add-event-btn {
+    font-size: 40px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+  }
 }
