@@ -1,5 +1,4 @@
 :root {
-  --numHours: 10;
   --timeHeight: 60px;
   --user1Color: #f4cccc;
   --user2Color: #f29b6a;
@@ -14,11 +13,82 @@ body {
   padding: 0;
 }
 
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 60px;
+  background-color: #fff;
+  border-left: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .logo {
+  margin-top: 20px;
+  font-size: 35px;
+  margin-bottom: 10px;
+  color: #b79ec6;
+}
+
+.sidebar .divider {
+  width: 80%;
+  height: 1px;
+  background-color: #ddd;
+  margin: 10px 0;
+}
+
+.sidebar .menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar .menu a {
+  display: block;
+  margin: 10px 0;
+  font-size: 25px;
+  color: #f29b6a;
+  text-decoration: none;
+}
+
+.sidebar .menu a:hover {
+  color: #b79ec6;
+}
+
+.sidebar .power-off {
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.sidebar .power-off a {
+  font-size: 25px;
+  color: #f29b6a;
+  text-decoration: none;
+}
+
+.sidebar .power-off a:hover {
+  color: #b79ec6;
+}
+
+.sidebar .profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
 .calendar {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  max-width: 90vw;
 }
 
 .timeline {
@@ -41,6 +111,8 @@ body {
 
 .days {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
   gap: 10px;
 }
@@ -71,21 +143,47 @@ body {
 }
 
 .events {
+  display: flex;
+  justify-content: center;
   position: relative;
-  height: calc(var(--numHours) * var(--timeHeight));
+  height: 80vh;
   border: 1px solid #ddd;
   border-radius: 8px;
   background: #96af9c49;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .event {
   position: absolute;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #00000046;
   border-radius: 5px;
   background: #fff;
   width: 90%;
-  margin-left: 5%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.event-details {
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.time,
+.user {
+  margin: 0;
+  font-size: 0.9em;
 }
 
 .user1 {
@@ -98,6 +196,12 @@ body {
 
 .user3 {
   background: var(--user3Color);
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Modal styles */

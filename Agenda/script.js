@@ -9,6 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const endTimeInput = document.getElementById("event-end-time");
   const userInput = document.getElementById("user");
 
+  // Object to store busy times
+  const busyTimes = {
+    segunda: [],
+    terça: [],
+    quarta: [],
+    quinta: [],
+    sexta: [],
+  };
+
   // Atualizar datas da semana
   const today = new Date();
   const day = today.getDay();
@@ -39,35 +48,59 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Função para verificar se o horário está ocupado
+  function isTimeSlotAvailable(day, start, end) {
+    return !busyTimes[day].some(
+      (event) =>
+        (start >= event.start && start < event.end) ||
+        (end > event.start && end <= event.end) ||
+        (start <= event.start && end >= event.end)
+    );
+  }
+
+  // Função para adicionar um evento
+  function addEvent(eventName, eventDay, startTime, endTime, user) {
+    const start = parseInt(startTime.split(":")[0], 10);
+    const end = parseInt(endTime.split(":")[0], 10);
+
+    if (!isTimeSlotAvailable(eventDay, start, end)) {
+      alert("Este horário já está ocupado.");
+      return;
+    }
+
+    busyTimes[eventDay].push({ start, end });
+
+    const eventsSection = document.querySelector(
+      `.day[data-day="${eventDay}"] .events`
+    );
+
+    const eventElement = document.createElement("div");
+    eventElement.classList.add("event", user);
+    eventElement.style.top = `${(start - 0) * 60}px`;
+    eventElement.style.height = `${(end - start) * 60}px`;
+    eventElement.innerHTML = `
+      <div class="event-details">
+        <p class="title">${eventName}</p>
+        <p class="time">${startTime} - ${endTime}</p>
+        <p class="user">Evento adicionado por: ${user}</p>
+      </div>
+    `;
+
+    eventsSection.appendChild(eventElement);
+  }
+
   // Submissão do formulário
   eventForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const eventName = eventNameInput.value;
-    const eventDay = eventDayInput.value;
-    const startTime = startTimeInput.value;
-    const endTime = endTimeInput.value;
-    const user = userInput.value;
+    const eventName = document.getElementById("event-name").value;
+    const eventDay = document.getElementById("event-day").value;
+    const startTime = document.getElementById("event-start-time").value;
+    const endTime = document.getElementById("event-end-time").value;
+    const user = document.getElementById("user").value;
 
     if (eventName.trim() !== "" && startTime && endTime) {
-      const start = parseInt(startTime.split(":")[0], 10);
-      const end = parseInt(endTime.split(":")[0], 10);
-
-      const eventsSection = document.querySelector(
-        `.day[data-day="${eventDay}"] .events`
-      );
-
-      const eventElement = document.createElement("div");
-      eventElement.classList.add("event", user);
-      eventElement.style.top = `${(start - 9) * 60}px`;
-      eventElement.style.height = `${(end - start) * 60}px`;
-      eventElement.innerHTML = `
-              <p class="title">${eventName}</p>
-              <p class="time">${startTime} - ${endTime}</p>
-          `;
-
-      eventsSection.appendChild(eventElement);
-
+      addEvent(eventName, eventDay, startTime, endTime, user);
       modal.style.display = "none";
       eventForm.reset();
     }
