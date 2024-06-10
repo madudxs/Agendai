@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <title>Relatórios</title>
     <link rel="stylesheet" type="text/css" href="../styles/analitics.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <!-- Importando Google Charts -->
     <script
       type="text/javascript"
@@ -11,6 +15,9 @@
     ></script>
     <script type="text/javascript" src="../js/analitics.js"></script>
   </head>
+  <header>
+    <h1>Agendai</h1>
+  </header>
   <body>
     <!-- Navegação entre as informações dos clientes -->
     <div class="main_container">
@@ -56,6 +63,23 @@
           <h3>Uso da Sala</h3>
           <div id="doctors-chart" class="chart"></div>
         </div>
+      </div>
+    </div>
+
+    <!-- Menu lateral -->
+    <div class="sidebar">
+      <div class="logo">
+        <i class="fa-regular fa-clock"></i>
+      </div>
+      <div class="divider"></div>
+      <nav class="menu">
+        <a href="../Agenda/Agenda.html" class="add-event-icon"
+          ><i class="fa-solid fa-calendar-check"></i
+        ></a>
+      </nav>
+      <div class="divider"></div>
+      <div class="power-off">
+        <a href="#"><i class="fa-solid fa-power-off"></i></a>
       </div>
     </div>
   </body>

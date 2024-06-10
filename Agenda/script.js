@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("modal");
   const closeModal = document.querySelector(".close");
   const addEventBtn = document.querySelector(".add-event-btn");
+  const addEventIcon = document.querySelector(".add-event-icon"); // Seleciona o ícone de adicionar evento
   const eventForm = document.getElementById("event-form");
   const eventNameInput = document.getElementById("event-name");
   const eventDayInput = document.getElementById("event-day");
@@ -34,6 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Abrir o modal ao clicar no botão
   addEventBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+  });
+
+  // Abrir o modal ao clicar no ícone de adicionar evento
+  addEventIcon.addEventListener("click", () => {
     modal.style.display = "block";
   });
 
@@ -93,11 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
   eventForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const eventName = document.getElementById("event-name").value;
-    const eventDay = document.getElementById("event-day").value;
-    const startTime = document.getElementById("event-start-time").value;
-    const endTime = document.getElementById("event-end-time").value;
-    const user = document.getElementById("user").value;
+    const eventName = eventNameInput.value;
+    const eventDay = eventDayInput.value;
+    const startTime = startTimeInput.value;
+    const endTime = endTimeInput.value;
+    const user = userInput.value;
 
     if (eventName.trim() !== "" && startTime && endTime) {
       addEvent(eventName, eventDay, startTime, endTime, user);

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap");
+
 :root {
   --timeHeight: 60px;
   --user1Color: #f4cccc;
@@ -11,6 +13,38 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 50px;
+  margin-right: 100px;
+  align-items: center;
+  padding: 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 4rem;
+  font-family: "Yeseva One", serif;
+  color: #a18fc0;
+}
+
+.add-event-btn {
+  background-color: #b79ec6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  border-radius: 20px;
+}
+
+.add-event-btn:hover {
+  background-color: #a18fc0;
 }
 
 .sidebar {
@@ -76,19 +110,13 @@ body {
   color: #b79ec6;
 }
 
-.sidebar .profile img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-top: 20px;
-}
-
 .calendar {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
-  max-width: 90vw;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 95vw;
 }
 
 .timeline {
@@ -146,7 +174,7 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
-  height: 80vh;
+  height: 75vh;
   border: 1px solid #ddd;
   border-radius: 8px;
   background: #96af9c49;
@@ -236,28 +264,6 @@ body {
 
 .close:hover {
   color: #555;
-}
-
-.add-event-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #b79ec6;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  font-size: 50px;
-  line-height: 50px;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-}
-
-.add-event-btn:hover {
-  background-color: #a18fc0;
 }
 
 #event-form {
